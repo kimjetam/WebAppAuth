@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApp_UnderTheHood.Authorization;
 
 namespace WebApp_UnderTheHood.Pages.Account
 {
@@ -31,7 +32,7 @@ namespace WebApp_UnderTheHood.Pages.Account
                 new("Department", "HR"),
                 new("Admin", "true"),
                 new("Manager", "true"),
-                new("EmploymentDate", "2024-05-01"),
+                new("EmploymentDate", "2024-02-01"),
             };
 
             var identity = new ClaimsIdentity(claims, "MyCookieAuth");
@@ -46,17 +47,5 @@ namespace WebApp_UnderTheHood.Pages.Account
 
             return RedirectToPage("/Index");
         }
-    }
-
-    public class Credential
-    {
-        [Required]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; } = string.Empty;
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; } = string.Empty;
-        [Display(Name = "Remember Me")]
-        public bool RememberMe { get; set; }
     }
 }
